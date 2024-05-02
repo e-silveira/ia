@@ -1,3 +1,1079 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[portuguese]{babel}
+
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ }
+
+\title{Trabalho de Inteligência Artificial}
+\author{Eduardo de Medeiros da Silveira}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Questão 1}
+
+\begin{verbatim}
+TREE:
+{(3, 3, 0), 0}
+|   {(3, 2, 1), 1}
+|   |   {(3, 3, 0), 2}
+|   {(3, 1, 1), 1}
+|   |   {(3, 2, 0), 2}
+|   |   |   {(3, 1, 1), 3}
+|   |   |   {(3, 0, 1), 3}
+|   |   |   |   {(3, 1, 0), 4}
+|   |   |   |   |   {(3, 0, 1), 5}
+|   |   |   |   |   {(1, 1, 1), 5}
+|   |   |   |   |   |   {(2, 2, 0), 6}
+|   |   |   |   |   |   |   {(1, 1, 1), 7}
+|   |   |   |   |   |   |   {(0, 2, 1), 7}
+|   |   |   |   |   |   |   |   {(0, 3, 0), 8}
+|   |   |   |   |   |   |   |   |   {(0, 2, 1), 9}
+|   |   |   |   |   |   |   |   |   {(0, 1, 1), 9}
+|   |   |   |   |   |   |   |   |   |   {(0, 2, 0), 10}
+|   |   |   |   |   |   |   |   |   |   |   {(0, 1, 1), 11}
+|   |   |   |   |   |   |   |   |   |   |   {(0, 0, 1), 11}
+|   |   |   |   |   |   |   |   |   |   {(0, 3, 0), 10}
+|   |   |   |   |   |   |   |   |   |   {(1, 1, 0), 10}
+|   |   |   |   |   |   |   |   {(2, 2, 0), 8}
+|   |   |   |   |   |   {(3, 1, 0), 6}
+|   |   |   |   {(3, 2, 0), 4}
+|   |   |   {(2, 2, 1), 3}
+|   |   {(3, 3, 0), 2}
+|   {(2, 2, 1), 1}
+|   |   {(3, 2, 0), 2}
+|   |   {(3, 3, 0), 2}
+FOUND GOAL:
+{(0, 0, 1), 11} with cost 11
+SOLUTION:
+[((3, 3, 0), (3, 1, 1), (0, 2, 1), 1),
+ ((3, 1, 1), (3, 2, 0), (0, 1, 0), 1),
+ ((3, 2, 0), (3, 0, 1), (0, 2, 1), 1),
+ ((3, 0, 1), (3, 1, 0), (0, 1, 0), 1),
+ ((3, 1, 0), (1, 1, 1), (2, 0, 1), 1),
+ ((1, 1, 1), (2, 2, 0), (1, 1, 0), 1),
+ ((2, 2, 0), (0, 2, 1), (2, 0, 1), 1),
+ ((0, 2, 1), (0, 3, 0), (0, 1, 0), 1),
+ ((0, 3, 0), (0, 1, 1), (0, 2, 1), 1),
+ ((0, 1, 1), (0, 2, 0), (0, 1, 0), 1),
+ ((0, 2, 0), (0, 0, 1), (0, 2, 1), 1)]
+HISTORY:
+{(3, 3, 0), 0} inserted in QUEUE
+[{(3, 3, 0), 0}]
+---
+(3, 3, 0) inserted in REACHED
+[(3, 3, 0)]
+---
+{(3, 3, 0), 0} removed from QUEUE
+[]
+---
+{(3, 2, 1), 1} inserted in QUEUE
+[{(3, 2, 1), 1}]
+---
+(3, 2, 1) inserted in REACHED
+[(3, 3, 0), (3, 2, 1)]
+---
+{(3, 1, 1), 1} inserted in QUEUE
+[{(3, 2, 1), 1}, {(3, 1, 1), 1}]
+---
+(3, 1, 1) inserted in REACHED
+[(3, 3, 0), (3, 2, 1), (3, 1, 1)]
+---
+{(2, 2, 1), 1} inserted in QUEUE
+[{(3, 2, 1), 1}, {(3, 1, 1), 1}, {(2, 2, 1), 1}]
+---
+(2, 2, 1) inserted in REACHED
+[(3, 3, 0), (3, 2, 1), (3, 1, 1), (2, 2, 1)]
+---
+{(3, 2, 1), 1} removed from QUEUE
+[{(3, 1, 1), 1}, {(2, 2, 1), 1}]
+---
+{(3, 1, 1), 1} removed from QUEUE
+[{(2, 2, 1), 1}]
+---
+{(3, 2, 0), 2} inserted in QUEUE
+[{(2, 2, 1), 1}, {(3, 2, 0), 2}]
+---
+(3, 2, 0) inserted in REACHED
+[(3, 3, 0), (3, 2, 1), (3, 1, 1), (2, 2, 1), (3, 2, 0)]
+---
+{(2, 2, 1), 1} removed from QUEUE
+[{(3, 2, 0), 2}]
+---
+{(3, 2, 0), 2} removed from QUEUE
+[]
+---
+{(3, 0, 1), 3} inserted in QUEUE
+[{(3, 0, 1), 3}]
+---
+(3, 0, 1) inserted in REACHED
+[(3, 3, 0), (3, 2, 1), (3, 1, 1), (2, 2, 1), (3, 2, 0), (3, 0, 1)]
+---
+{(3, 0, 1), 3} removed from QUEUE
+[]
+---
+{(3, 1, 0), 4} inserted in QUEUE
+[{(3, 1, 0), 4}]
+---
+(3, 1, 0) inserted in REACHED
+[(3, 3, 0), (3, 2, 1), (3, 1, 1), (2, 2, 1), (3, 2, 0), (3, 0, 1), (3, 1, 0)]
+---
+{(3, 1, 0), 4} removed from QUEUE
+[]
+---
+{(1, 1, 1), 5} inserted in QUEUE
+[{(1, 1, 1), 5}]
+---
+(1, 1, 1) inserted in REACHED
+[(3, 3, 0),
+ (3, 2, 1),
+ (3, 1, 1),
+ (2, 2, 1),
+ (3, 2, 0),
+ (3, 0, 1),
+ (3, 1, 0),
+ (1, 1, 1)]
+---
+{(1, 1, 1), 5} removed from QUEUE
+[]
+---
+{(2, 2, 0), 6} inserted in QUEUE
+[{(2, 2, 0), 6}]
+---
+(2, 2, 0) inserted in REACHED
+[(3, 3, 0),
+ (3, 2, 1),
+ (3, 1, 1),
+ (2, 2, 1),
+ (3, 2, 0),
+ (3, 0, 1),
+ (3, 1, 0),
+ (1, 1, 1),
+ (2, 2, 0)]
+---
+{(2, 2, 0), 6} removed from QUEUE
+[]
+---
+{(0, 2, 1), 7} inserted in QUEUE
+[{(0, 2, 1), 7}]
+---
+(0, 2, 1) inserted in REACHED
+[(3, 3, 0),
+ (3, 2, 1),
+ (3, 1, 1),
+ (2, 2, 1),
+ (3, 2, 0),
+ (3, 0, 1),
+ (3, 1, 0),
+ (1, 1, 1),
+ (2, 2, 0),
+ (0, 2, 1)]
+---
+{(0, 2, 1), 7} removed from QUEUE
+[]
+---
+{(0, 3, 0), 8} inserted in QUEUE
+[{(0, 3, 0), 8}]
+---
+(0, 3, 0) inserted in REACHED
+[(3, 3, 0),
+ (3, 2, 1),
+ (3, 1, 1),
+ (2, 2, 1),
+ (3, 2, 0),
+ (3, 0, 1),
+ (3, 1, 0),
+ (1, 1, 1),
+ (2, 2, 0),
+ (0, 2, 1),
+ (0, 3, 0)]
+---
+{(0, 3, 0), 8} removed from QUEUE
+[]
+---
+{(0, 1, 1), 9} inserted in QUEUE
+[{(0, 1, 1), 9}]
+---
+(0, 1, 1) inserted in REACHED
+[(3, 3, 0),
+ (3, 2, 1),
+ (3, 1, 1),
+ (2, 2, 1),
+ (3, 2, 0),
+ (3, 0, 1),
+ (3, 1, 0),
+ (1, 1, 1),
+ (2, 2, 0),
+ (0, 2, 1),
+ (0, 3, 0),
+ (0, 1, 1)]
+---
+{(0, 1, 1), 9} removed from QUEUE
+[]
+---
+{(0, 2, 0), 10} inserted in QUEUE
+[{(0, 2, 0), 10}]
+---
+(0, 2, 0) inserted in REACHED
+[(3, 3, 0),
+ (3, 2, 1),
+ (3, 1, 1),
+ (2, 2, 1),
+ (3, 2, 0),
+ (3, 0, 1),
+ (3, 1, 0),
+ (1, 1, 1),
+ (2, 2, 0),
+ (0, 2, 1),
+ (0, 3, 0),
+ (0, 1, 1),
+ (0, 2, 0)]
+---
+{(1, 1, 0), 10} inserted in QUEUE
+[{(0, 2, 0), 10}, {(1, 1, 0), 10}]
+---
+(1, 1, 0) inserted in REACHED
+[(3, 3, 0),
+ (3, 2, 1),
+ (3, 1, 1),
+ (2, 2, 1),
+ (3, 2, 0),
+ (3, 0, 1),
+ (3, 1, 0),
+ (1, 1, 1),
+ (2, 2, 0),
+ (0, 2, 1),
+ (0, 3, 0),
+ (0, 1, 1),
+ (0, 2, 0),
+ (1, 1, 0)]
+---
+{(0, 2, 0), 10} removed from QUEUE
+[{(1, 1, 0), 10}]
+---
+\end{verbatim}
+
+\newpage
+
+\section{Questão 2}
+
+\begin{verbatim}
+TREE:
+{(0, 0), 0}
+|   {(3, 0), 1}
+|   |   {(3, 4), 2}
+|   |   |   {(0, 4), 3}
+|   |   |   {(3, 0), 3}
+|   |   {(0, 0), 2}
+|   |   {(0, 3), 2}
+|   |   |   {(3, 3), 3}
+|   |   |   |   {(3, 4), 4}
+|   |   |   |   {(0, 3), 4}
+|   |   |   |   {(3, 0), 4}
+|   |   |   |   {(2, 4), 4}
+|   |   |   |   |   {(3, 4), 5}
+|   |   |   |   |   {(0, 4), 5}
+|   |   |   |   |   {(2, 0), 5}
+|   |   |   |   |   |   {(3, 0), 6}
+|   |   |   |   |   |   {(2, 4), 6}
+|   |   |   |   |   |   {(0, 0), 6}
+|   |   |   |   |   |   {(0, 2), 6}
+|   |   |   |   |   {(3, 3), 5}
+|   |   |   {(0, 4), 3}
+|   |   |   {(0, 0), 3}
+|   |   |   {(3, 0), 3}
+|   {(0, 4), 1}
+|   |   {(3, 4), 2}
+|   |   {(0, 0), 2}
+|   |   {(3, 1), 2}
+|   |   |   {(3, 4), 3}
+|   |   |   {(0, 1), 3}
+|   |   |   |   {(3, 1), 4}
+|   |   |   |   {(0, 4), 4}
+|   |   |   |   {(0, 0), 4}
+|   |   |   |   {(1, 0), 4}
+|   |   |   |   |   {(3, 0), 5}
+|   |   |   |   |   {(1, 4), 5}
+|   |   |   |   |   {(0, 0), 5}
+|   |   |   |   |   {(0, 1), 5}
+|   |   |   {(3, 0), 3}
+|   |   |   {(0, 4), 3}
+FOUND GOAL:
+{(0, 2), 6} with cost 6
+SOLUTION:
+[((0, 0), (3, 0), 'filling 3', 1),
+ ((3, 0), (0, 3), 'pouring all 3 into 4', 1),
+ ((0, 3), (3, 3), 'filling 3', 1),
+ ((3, 3), (2, 4), 'pouring some 3 into 4', 1),
+ ((2, 4), (2, 0), 'emptying 4', 1),
+ ((2, 0), (0, 2), 'pouring all 3 into 4', 1)]
+HISTORY:
+{(0, 0), 0} inserted in QUEUE
+[{(0, 0), 0}]
+---
+(0, 0) inserted in REACHED
+[(0, 0)]
+---
+{(0, 0), 0} removed from QUEUE
+[]
+---
+{(3, 0), 1} inserted in QUEUE
+[{(3, 0), 1}]
+---
+(3, 0) inserted in REACHED
+[(0, 0), (3, 0)]
+---
+{(0, 4), 1} inserted in QUEUE
+[{(3, 0), 1}, {(0, 4), 1}]
+---
+(0, 4) inserted in REACHED
+[(0, 0), (3, 0), (0, 4)]
+---
+{(3, 0), 1} removed from QUEUE
+[{(0, 4), 1}]
+---
+{(3, 4), 2} inserted in QUEUE
+[{(0, 4), 1}, {(3, 4), 2}]
+---
+(3, 4) inserted in REACHED
+[(0, 0), (3, 0), (0, 4), (3, 4)]
+---
+{(0, 3), 2} inserted in QUEUE
+[{(0, 4), 1}, {(3, 4), 2}, {(0, 3), 2}]
+---
+(0, 3) inserted in REACHED
+[(0, 0), (3, 0), (0, 4), (3, 4), (0, 3)]
+---
+{(0, 4), 1} removed from QUEUE
+[{(3, 4), 2}, {(0, 3), 2}]
+---
+{(3, 1), 2} inserted in QUEUE
+[{(3, 4), 2}, {(0, 3), 2}, {(3, 1), 2}]
+---
+(3, 1) inserted in REACHED
+[(0, 0), (3, 0), (0, 4), (3, 4), (0, 3), (3, 1)]
+---
+{(3, 4), 2} removed from QUEUE
+[{(0, 3), 2}, {(3, 1), 2}]
+---
+{(0, 3), 2} removed from QUEUE
+[{(3, 1), 2}]
+---
+{(3, 3), 3} inserted in QUEUE
+[{(3, 1), 2}, {(3, 3), 3}]
+---
+(3, 3) inserted in REACHED
+[(0, 0), (3, 0), (0, 4), (3, 4), (0, 3), (3, 1), (3, 3)]
+---
+{(3, 1), 2} removed from QUEUE
+[{(3, 3), 3}]
+---
+{(0, 1), 3} inserted in QUEUE
+[{(3, 3), 3}, {(0, 1), 3}]
+---
+(0, 1) inserted in REACHED
+[(0, 0), (3, 0), (0, 4), (3, 4), (0, 3), (3, 1), (3, 3), (0, 1)]
+---
+{(3, 3), 3} removed from QUEUE
+[{(0, 1), 3}]
+---
+{(2, 4), 4} inserted in QUEUE
+[{(0, 1), 3}, {(2, 4), 4}]
+---
+(2, 4) inserted in REACHED
+[(0, 0), (3, 0), (0, 4), (3, 4), (0, 3), (3, 1), (3, 3), (0, 1), (2, 4)]
+---
+{(0, 1), 3} removed from QUEUE
+[{(2, 4), 4}]
+---
+{(1, 0), 4} inserted in QUEUE
+[{(2, 4), 4}, {(1, 0), 4}]
+---
+(1, 0) inserted in REACHED
+[(0, 0), (3, 0), (0, 4), (3, 4), (0, 3), (3, 1), (3, 3), (0, 1), (2, 4), (1, 0)]
+---
+{(2, 4), 4} removed from QUEUE
+[{(1, 0), 4}]
+---
+{(2, 0), 5} inserted in QUEUE
+[{(1, 0), 4}, {(2, 0), 5}]
+---
+(2, 0) inserted in REACHED
+[(0, 0),
+ (3, 0),
+ (0, 4),
+ (3, 4),
+ (0, 3),
+ (3, 1),
+ (3, 3),
+ (0, 1),
+ (2, 4),
+ (1, 0),
+ (2, 0)]
+---
+{(1, 0), 4} removed from QUEUE
+[{(2, 0), 5}]
+---
+{(1, 4), 5} inserted in QUEUE
+[{(2, 0), 5}, {(1, 4), 5}]
+---
+(1, 4) inserted in REACHED
+[(0, 0),
+ (3, 0),
+ (0, 4),
+ (3, 4),
+ (0, 3),
+ (3, 1),
+ (3, 3),
+ (0, 1),
+ (2, 4),
+ (1, 0),
+ (2, 0),
+ (1, 4)]
+---
+{(2, 0), 5} removed from QUEUE
+[{(1, 4), 5}]
+---
+\end{verbatim}
+
+\newpage
+
+\section{Questão 3}
+
+\begin{verbatim}
+TREE:
+{('l', 'l', 'l', 'l'), 0}
+|   {('r', 'l', 'r', 'l'), 1}
+|   |   {('l', 'l', 'r', 'l'), 2}
+|   |   |   {('r', 'l', 'r', 'l'), 3}
+|   |   |   {('r', 'r', 'r', 'l'), 3}
+|   |   |   |   {('l', 'l', 'r', 'l'), 4}
+|   |   |   |   {('l', 'r', 'l', 'l'), 4}
+|   |   |   |   |   {('r', 'r', 'r', 'l'), 5}
+|   |   |   |   |   {('r', 'r', 'l', 'r'), 5}
+|   |   |   |   |   |   {('l', 'r', 'l', 'r'), 6}
+|   |   |   |   |   |   |   {('r', 'r', 'l', 'r'), 7}
+|   |   |   |   |   |   |   {('r', 'r', 'l', 'r'), 7}
+|   |   |   |   |   |   |   {('r', 'r', 'r', 'r'), 7}
+FOUND GOAL:
+{('r', 'r', 'r', 'r'), 7} with cost 7
+SOLUTION:
+[('carry-sheep', ('l', 'l', 'l', 'l'), ('r', 'l', 'r', 'l')),
+ ('go-back', ('r', 'l', 'r', 'l'), ('l', 'l', 'r', 'l')),
+ ('carry-wolf', ('l', 'l', 'r', 'l'), ('r', 'r', 'r', 'l')),
+ ('bring-sheep', ('r', 'r', 'r', 'l'), ('l', 'r', 'l', 'l')),
+ ('carry-cabbage', ('l', 'r', 'l', 'l'), ('r', 'r', 'l', 'r')),
+ ('go-back', ('r', 'r', 'l', 'r'), ('l', 'r', 'l', 'r')),
+ ('carry-sheep', ('l', 'r', 'l', 'r'), ('r', 'r', 'r', 'r'))]
+HISTORY:
+('l', 'l', 'l', 'l') inserted in REACHED
+[('l', 'l', 'l', 'l')]
+---
+('r', 'l', 'r', 'l') inserted in REACHED
+[('l', 'l', 'l', 'l'), ('r', 'l', 'r', 'l')]
+---
+('l', 'l', 'r', 'l') inserted in REACHED
+[('l', 'l', 'l', 'l'), ('r', 'l', 'r', 'l'), ('l', 'l', 'r', 'l')]
+---
+('r', 'r', 'r', 'l') inserted in REACHED
+[('l', 'l', 'l', 'l'),
+ ('r', 'l', 'r', 'l'),
+ ('l', 'l', 'r', 'l'),
+ ('r', 'r', 'r', 'l')]
+---
+('l', 'r', 'l', 'l') inserted in REACHED
+[('l', 'l', 'l', 'l'),
+ ('r', 'l', 'r', 'l'),
+ ('l', 'l', 'r', 'l'),
+ ('r', 'r', 'r', 'l'),
+ ('l', 'r', 'l', 'l')]
+---
+('r', 'r', 'l', 'r') inserted in REACHED
+[('l', 'l', 'l', 'l'),
+ ('r', 'l', 'r', 'l'),
+ ('l', 'l', 'r', 'l'),
+ ('r', 'r', 'r', 'l'),
+ ('l', 'r', 'l', 'l'),
+ ('r', 'r', 'l', 'r')]
+---
+('l', 'r', 'l', 'r') inserted in REACHED
+[('l', 'l', 'l', 'l'),
+ ('r', 'l', 'r', 'l'),
+ ('l', 'l', 'r', 'l'),
+ ('r', 'r', 'r', 'l'),
+ ('l', 'r', 'l', 'l'),
+ ('r', 'r', 'l', 'r'),
+ ('l', 'r', 'l', 'r')]
+---
+('r', 'r', 'r', 'r') inserted in REACHED
+[('l', 'l', 'l', 'l'),
+ ('r', 'l', 'r', 'l'),
+ ('l', 'l', 'r', 'l'),
+ ('r', 'r', 'r', 'l'),
+ ('l', 'r', 'l', 'l'),
+ ('r', 'r', 'l', 'r'),
+ ('l', 'r', 'l', 'r'),
+ ('r', 'r', 'r', 'r')]
+---
+\end{verbatim}
+
+\newpage
+
+\section{Questão 4}
+
+\begin{verbatim}
+TREE:
+{a, 0}
+|   {b, 1}
+|   |   {e, 2}
+|   |   {f, 2}
+|   {b, 1}
+|   {d, 1}
+|   |   {j, 2}
+FOUND GOAL:
+{j, 2} with cost 2
+SOLUTION:
+[('a', 'd', 'taking 3', 1), ('d', 'j', 'taking 9', 1)]
+HISTORY:
+{a, 0} inserted in QUEUE
+[{a, 0}]
+---
+a inserted in REACHED
+['a']
+---
+{a, 0} removed from QUEUE
+[]
+---
+{b, 1} inserted in QUEUE
+[{b, 1}]
+---
+b inserted in REACHED
+['a', 'b']
+---
+{d, 1} inserted in QUEUE
+[{b, 1}, {d, 1}]
+---
+d inserted in REACHED
+['a', 'b', 'd']
+---
+{b, 1} removed from QUEUE
+[{d, 1}]
+---
+{e, 2} inserted in QUEUE
+[{d, 1}, {e, 2}]
+---
+e inserted in REACHED
+['a', 'b', 'd', 'e']
+---
+{f, 2} inserted in QUEUE
+[{d, 1}, {e, 2}, {f, 2}]
+---
+f inserted in REACHED
+['a', 'b', 'd', 'e', 'f']
+---
+{d, 1} removed from QUEUE
+[{e, 2}, {f, 2}]
+---
+--------------------------------------------------
+
+TREE:
+{a, 0}
+|   {b, 1}
+|   |   {e, 2}
+|   |   |   {k, 3}
+|   |   |   |   {f, 4}
+|   |   |   {l, 3}
+|   |   |   |   {h, 4}
+|   |   {f, 2}
+|   {b, 1}
+|   {d, 1}
+|   |   {j, 2}
+FOUND GOAL:
+{j, 2} with cost 2
+SOLUTION:
+[('a', 'd', 'taking 3', 1), ('d', 'j', 'taking 9', 1)]
+HISTORY:
+a inserted in REACHED
+['a']
+---
+b inserted in REACHED
+['a', 'b']
+---
+e inserted in REACHED
+['a', 'b', 'e']
+---
+k inserted in REACHED
+['a', 'b', 'e', 'k']
+---
+f inserted in REACHED
+['a', 'b', 'e', 'k', 'f']
+---
+l inserted in REACHED
+['a', 'b', 'e', 'k', 'f', 'l']
+---
+h inserted in REACHED
+['a', 'b', 'e', 'k', 'f', 'l', 'h']
+---
+d inserted in REACHED
+['a', 'b', 'e', 'k', 'f', 'l', 'h', 'd']
+---
+j inserted in REACHED
+['a', 'b', 'e', 'k', 'f', 'l', 'h', 'd', 'j']
+---
+\end{verbatim}
+
+\newpage
+
+\section{Questão 5}
+
+\begin{verbatim}
+GREEDY BEST FIRST
+TREE:
+{a, 0}
+|   {b, 1}
+|   |   {a, 2}
+|   |   {c, 8}
+|   |   {e, 7}
+|   |   {f, 2}
+|   |   |   {b, 3}
+|   |   |   {c, 9}
+|   |   |   {d, 6}
+|   |   |   {h, 6}
+|   {c, 9}
+|   {d, 4}
+|   |   {a, 8}
+|   |   {f, 8}
+|   |   {g, 9}
+FOUND GOAL:
+{h, 6} with cost 6
+SOLUTION:
+[('b', 1), ('f', 1), ('h', 4)]
+HISTORY:
+{a, 0} inserted in PRIORITY QUEUE with priority 0
+[(0, {a, 0})]
+---
+a inserted in REACHED with value 0
+{'a': {a, 0}}
+---
+{a, 0} removed from PRIORITY QUEUE
+[]
+---
+b inserted in REACHED with value 1
+{'a': {a, 0}, 'b': {b, 1}}
+---
+{b, 1} inserted in PRIORITY QUEUE with priority 1
+[(1, {b, 1})]
+---
+c inserted in REACHED with value 9
+{'a': {a, 0}, 'b': {b, 1}, 'c': {c, 9}}
+---
+{c, 9} inserted in PRIORITY QUEUE with priority 9
+[(1, {b, 1}), (9, {c, 9})]
+---
+d inserted in REACHED with value 4
+{'a': {a, 0}, 'b': {b, 1}, 'c': {c, 9}, 'd': {d, 4}}
+---
+{d, 4} inserted in PRIORITY QUEUE with priority 4
+[(1, {b, 1}), (4, {d, 4}), (9, {c, 9})]
+---
+{b, 1} removed from PRIORITY QUEUE
+[(4, {d, 4}), (9, {c, 9})]
+---
+c updated in REACHED with value 8
+{'a': {a, 0}, 'b': {b, 1}, 'c': {c, 8}, 'd': {d, 4}}
+---
+{c, 8} update in PRIORITY QUEUE with priority 7
+[(4, {d, 4}), (7, {c, 8})]
+---
+e inserted in REACHED with value 7
+{'a': {a, 0}, 'b': {b, 1}, 'c': {c, 8}, 'd': {d, 4}, 'e': {e, 7}}
+---
+{e, 7} inserted in PRIORITY QUEUE with priority 6
+[(4, {d, 4}), (6, {e, 7}), (7, {c, 8})]
+---
+f inserted in REACHED with value 2
+{'a': {a, 0}, 'b': {b, 1}, 'c': {c, 8}, 'd': {d, 4}, 'e': {e, 7}, 'f': {f, 2}}
+---
+{f, 2} inserted in PRIORITY QUEUE with priority 1
+[(1, {f, 2}), (4, {d, 4}), (6, {e, 7}), (7, {c, 8})]
+---
+{f, 2} removed from PRIORITY QUEUE
+[(4, {d, 4}), (6, {e, 7}), (7, {c, 8})]
+---
+h inserted in REACHED with value 6
+{'a': {a, 0},
+ 'b': {b, 1},
+ 'c': {c, 8},
+ 'd': {d, 4},
+ 'e': {e, 7},
+ 'f': {f, 2},
+ 'h': {h, 6}}
+---
+{h, 6} inserted in PRIORITY QUEUE with priority 4
+[(4, {d, 4}), (4, {h, 6}), (6, {e, 7}), (7, {c, 8})]
+---
+{d, 4} removed from PRIORITY QUEUE
+[(4, {h, 6}), (6, {e, 7}), (7, {c, 8})]
+---
+g inserted in REACHED with value 9
+{'a': {a, 0},
+ 'b': {b, 1},
+ 'c': {c, 8},
+ 'd': {d, 4},
+ 'e': {e, 7},
+ 'f': {f, 2},
+ 'g': {g, 9},
+ 'h': {h, 6}}
+---
+{g, 9} inserted in PRIORITY QUEUE with priority 5
+[(4, {h, 6}), (5, {g, 9}), (6, {e, 7}), (7, {c, 8})]
+---
+{h, 6} removed from PRIORITY QUEUE
+[(5, {g, 9}), (6, {e, 7}), (7, {c, 8})]
+---
+BREADTH FIRST
+TREE:
+{a, 0}
+|   {b, 1}
+|   |   {a, 2}
+|   |   {c, 8}
+|   |   {e, 7}
+|   |   |   {b, 13}
+|   |   |   {h, 16}
+|   |   {f, 2}
+|   {c, 9}
+|   |   {a, 18}
+|   |   {b, 16}
+|   |   {f, 16}
+|   {d, 4}
+|   |   {a, 8}
+|   |   {f, 8}
+|   |   {g, 9}
+FOUND GOAL:
+{h, 16} with cost 16
+SOLUTION:
+[('b', 1), ('e', 6), ('h', 9)]
+HISTORY:
+{a, 0} inserted in QUEUE
+[{a, 0}]
+---
+a inserted in REACHED
+['a']
+---
+{a, 0} removed from QUEUE
+[]
+---
+{b, 1} inserted in QUEUE
+[{b, 1}]
+---
+b inserted in REACHED
+['a', 'b']
+---
+{c, 9} inserted in QUEUE
+[{b, 1}, {c, 9}]
+---
+c inserted in REACHED
+['a', 'b', 'c']
+---
+{d, 4} inserted in QUEUE
+[{b, 1}, {c, 9}, {d, 4}]
+---
+d inserted in REACHED
+['a', 'b', 'c', 'd']
+---
+{b, 1} removed from QUEUE
+[{c, 9}, {d, 4}]
+---
+{e, 7} inserted in QUEUE
+[{c, 9}, {d, 4}, {e, 7}]
+---
+e inserted in REACHED
+['a', 'b', 'c', 'd', 'e']
+---
+{f, 2} inserted in QUEUE
+[{c, 9}, {d, 4}, {e, 7}, {f, 2}]
+---
+f inserted in REACHED
+['a', 'b', 'c', 'd', 'e', 'f']
+---
+{c, 9} removed from QUEUE
+[{d, 4}, {e, 7}, {f, 2}]
+---
+{d, 4} removed from QUEUE
+[{e, 7}, {f, 2}]
+---
+{g, 9} inserted in QUEUE
+[{e, 7}, {f, 2}, {g, 9}]
+---
+g inserted in REACHED
+['a', 'b', 'c', 'd', 'e', 'f', 'g']
+---
+{e, 7} removed from QUEUE
+[{f, 2}, {g, 9}]
+---
+DEPTH FIRST
+TREE:
+{a, 0}
+|   {b, 1}
+|   |   {a, 2}
+|   |   {c, 8}
+|   |   |   {a, 17}
+|   |   |   {b, 15}
+|   |   |   {f, 15}
+|   |   |   |   {b, 16}
+|   |   |   |   {c, 22}
+|   |   |   |   {d, 19}
+|   |   |   |   |   {a, 23}
+|   |   |   |   |   {f, 23}
+|   |   |   |   |   {g, 24}
+|   |   |   |   |   |   {d, 29}
+|   |   |   |   |   |   {h, 25}
+FOUND GOAL:
+{h, 25} with cost 25
+SOLUTION:
+[('b', 1), ('c', 7), ('f', 7), ('d', 4), ('g', 5), ('h', 1)]
+HISTORY:
+a inserted in REACHED
+['a']
+---
+b inserted in REACHED
+['a', 'b']
+---
+c inserted in REACHED
+['a', 'b', 'c']
+---
+f inserted in REACHED
+['a', 'b', 'c', 'f']
+---
+d inserted in REACHED
+['a', 'b', 'c', 'f', 'd']
+---
+g inserted in REACHED
+['a', 'b', 'c', 'f', 'd', 'g']
+---
+h inserted in REACHED
+['a', 'b', 'c', 'f', 'd', 'g', 'h']
+---
+\end{verbatim}
+
+\newpage
+
+\section{Questão 6}
+
+\begin{verbatim}
+TREE:
+{a, 0}
+|   {b, 7}
+|   {c, 9}
+|   |   {a, 18}
+|   |   {j, 14}
+|   |   |   {c, 19}
+|   |   |   {l, 20}
+|   |   |   |   {j, 26}
+|   |   |   |   {k, 24}
+|   {d, 3}
+FOUND GOAL:
+{k, 24} with cost 24
+SOLUTION:
+[('c', 9), ('j', 5), ('l', 6), ('k', 4)]
+HISTORY:
+{a, 0} inserted in PRIORITY QUEUE with priority 0
+[(0, {a, 0})]
+---
+a inserted in REACHED with value 0
+{'a': {a, 0}}
+---
+{a, 0} removed from PRIORITY QUEUE
+[]
+---
+b inserted in REACHED with value 7
+{'a': {a, 0}, 'b': {b, 7}}
+---
+{b, 7} inserted in PRIORITY QUEUE with priority 7
+[(7, {b, 7})]
+---
+c inserted in REACHED with value 9
+{'a': {a, 0}, 'b': {b, 7}, 'c': {c, 9}}
+---
+{c, 9} inserted in PRIORITY QUEUE with priority 6
+[(6, {c, 9}), (7, {b, 7})]
+---
+d inserted in REACHED with value 3
+{'a': {a, 0}, 'b': {b, 7}, 'c': {c, 9}, 'd': {d, 3}}
+---
+{d, 3} inserted in PRIORITY QUEUE with priority 14
+[(6, {c, 9}), (7, {b, 7}), (14, {d, 3})]
+---
+{c, 9} removed from PRIORITY QUEUE
+[(7, {b, 7}), (14, {d, 3})]
+---
+j inserted in REACHED with value 14
+{'a': {a, 0}, 'b': {b, 7}, 'c': {c, 9}, 'd': {d, 3}, 'j': {j, 14}}
+---
+{j, 14} inserted in PRIORITY QUEUE with priority 3
+[(3, {j, 14}), (7, {b, 7}), (14, {d, 3})]
+---
+{j, 14} removed from PRIORITY QUEUE
+[(7, {b, 7}), (14, {d, 3})]
+---
+l inserted in REACHED with value 20
+{'a': {a, 0}, 'b': {b, 7}, 'c': {c, 9}, 'd': {d, 3}, 'j': {j, 14}, 'l': {l, 20}}
+---
+{l, 20} inserted in PRIORITY QUEUE with priority 4
+[(4, {l, 20}), (7, {b, 7}), (14, {d, 3})]
+---
+{l, 20} removed from PRIORITY QUEUE
+[(7, {b, 7}), (14, {d, 3})]
+---
+k inserted in REACHED with value 24
+{'a': {a, 0},
+ 'b': {b, 7},
+ 'c': {c, 9},
+ 'd': {d, 3},
+ 'j': {j, 14},
+ 'k': {k, 24},
+ 'l': {l, 20}}
+---
+{k, 24} inserted in PRIORITY QUEUE with priority 0
+[(0, {k, 24}), (7, {b, 7}), (14, {d, 3})]
+---
+{k, 24} removed from PRIORITY QUEUE
+[(7, {b, 7}), (14, {d, 3})]
+---
+\end{verbatim}
+
+\newpage
+
+\section{Questão 7}
+
+\begin{verbatim}
+TREE:
+{a, 0}
+|   {b, 7}
+|   |   {a, 14}
+|   |   {f, 8}
+|   |   |   {b, 11}
+|   |   |   {g, 10}
+|   |   {i, 11}
+|   |   |   {b, 15}
+|   |   |   {k, 16}
+|   {c, 9}
+|   |   {a, 18}
+|   |   {j, 14}
+|   {d, 3}
+FOUND GOAL:
+{k, 16} with cost 16
+SOLUTION:
+[('b', 7), ('i', 4), ('k', 5)]
+HISTORY:
+{a, 0} inserted in PRIORITY QUEUE with priority 0
+[(0, {a, 0})]
+---
+a inserted in REACHED with value 0
+{'a': {a, 0}}
+---
+{a, 0} removed from PRIORITY QUEUE
+[]
+---
+b inserted in REACHED with value 7
+{'a': {a, 0}, 'b': {b, 7}}
+---
+{b, 7} inserted in PRIORITY QUEUE with priority 14
+[(14, {b, 7})]
+---
+c inserted in REACHED with value 9
+{'a': {a, 0}, 'b': {b, 7}, 'c': {c, 9}}
+---
+{c, 9} inserted in PRIORITY QUEUE with priority 15
+[(14, {b, 7}), (15, {c, 9})]
+---
+d inserted in REACHED with value 3
+{'a': {a, 0}, 'b': {b, 7}, 'c': {c, 9}, 'd': {d, 3}}
+---
+{d, 3} inserted in PRIORITY QUEUE with priority 17
+[(14, {b, 7}), (15, {c, 9}), (17, {d, 3})]
+---
+{b, 7} removed from PRIORITY QUEUE
+[(15, {c, 9}), (17, {d, 3})]
+---
+f inserted in REACHED with value 8
+{'a': {a, 0}, 'b': {b, 7}, 'c': {c, 9}, 'd': {d, 3}, 'f': {f, 8}}
+---
+{f, 8} inserted in PRIORITY QUEUE with priority 15
+[(15, {c, 9}), (15, {f, 8}), (17, {d, 3})]
+---
+i inserted in REACHED with value 11
+{'a': {a, 0}, 'b': {b, 7}, 'c': {c, 9}, 'd': {d, 3}, 'f': {f, 8}, 'i': {i, 11}}
+---
+{i, 11} inserted in PRIORITY QUEUE with priority 16
+[(15, {c, 9}), (15, {f, 8}), (16, {i, 11}), (17, {d, 3})]
+---
+{c, 9} removed from PRIORITY QUEUE
+[(15, {f, 8}), (16, {i, 11}), (17, {d, 3})]
+---
+j inserted in REACHED with value 14
+{'a': {a, 0},
+ 'b': {b, 7},
+ 'c': {c, 9},
+ 'd': {d, 3},
+ 'f': {f, 8},
+ 'i': {i, 11},
+ 'j': {j, 14}}
+---
+{j, 14} inserted in PRIORITY QUEUE with priority 17
+[(15, {f, 8}), (16, {i, 11}), (17, {d, 3}), (17, {j, 14})]
+---
+{f, 8} removed from PRIORITY QUEUE
+[(16, {i, 11}), (17, {d, 3}), (17, {j, 14})]
+---
+g inserted in REACHED with value 10
+{'a': {a, 0},
+ 'b': {b, 7},
+ 'c': {c, 9},
+ 'd': {d, 3},
+ 'f': {f, 8},
+ 'g': {g, 10},
+ 'i': {i, 11},
+ 'j': {j, 14}}
+---
+{g, 10} inserted in PRIORITY QUEUE with priority 18
+[(16, {i, 11}), (17, {d, 3}), (17, {j, 14}), (18, {g, 10})]
+---
+{i, 11} removed from PRIORITY QUEUE
+[(17, {d, 3}), (17, {j, 14}), (18, {g, 10})]
+---
+k inserted in REACHED with value 16
+{'a': {a, 0},
+ 'b': {b, 7},
+ 'c': {c, 9},
+ 'd': {d, 3},
+ 'f': {f, 8},
+ 'g': {g, 10},
+ 'i': {i, 11},
+ 'j': {j, 14},
+ 'k': {k, 16}}
+---
+{k, 16} inserted in PRIORITY QUEUE with priority 16
+[(16, {k, 16}), (17, {d, 3}), (17, {j, 14}), (18, {g, 10})]
+---
+{k, 16} removed from PRIORITY QUEUE
+[(17, {d, 3}), (17, {j, 14}), (18, {g, 10})]
+---
+\end{verbatim}
+
+\newpage
+
+\section{Questão 8}
+
+\begin{verbatim}
 GREEDY BEST FIRST - COST 1
 TREE:
 {(1, 3, 4, 8, 2, 5, 7, 6, 0), 0}
@@ -1325,3 +2401,257 @@ HISTORY:
  (6, {(1, 3, 4, 8, 0, 2, 7, 6, 5), 2}),
  (6, {(0, 1, 3, 8, 2, 4, 7, 6, 5), 4})]
 ---
+\end{verbatim}
+
+\newpage
+
+\section{Questão 9}
+
+\begin{verbatim}
+MINIMAX
+20
+{None} opened
+|   {None} opened
+|   |   {None} opened
+|   |   |   {None} opened
+|   |   |   |   {20} returns 20
+|   |   |   |   {33} returns 33
+|   |   |   {20} gets value 20 by min
+|   |   |   {None} opened
+|   |   |   |   {-45} returns -45
+|   |   |   |   {31} returns 31
+|   |   |   {-45} gets value -45 by min
+|   |   {20} gets value 20 by max
+|   |   {None} opened
+|   |   |   {None} opened
+|   |   |   |   {24} returns 24
+|   |   |   |   {25} returns 25
+|   |   |   {24} gets value 24 by min
+|   |   |   {None} opened
+|   |   |   |   {-10} returns -10
+|   |   |   |   {20} returns 20
+|   |   |   {-10} gets value -10 by min
+|   |   {24} gets value 24 by max
+|   {20} gets value 20 by min
+|   {None} opened
+|   |   {None} opened
+|   |   |   {None} opened
+|   |   |   |   {40} returns 40
+|   |   |   |   {-25} returns -25
+|   |   |   {-25} gets value -25 by min
+|   |   |   {None} opened
+|   |   |   |   {18} returns 18
+|   |   |   |   {-42} returns -42
+|   |   |   {-42} gets value -42 by min
+|   |   {-25} gets value -25 by max
+|   |   {None} opened
+|   |   |   {None} opened
+|   |   |   |   {24} returns 24
+|   |   |   |   {-19} returns -19
+|   |   |   {-19} gets value -19 by min
+|   |   |   {None} opened
+|   |   |   |   {36} returns 36
+|   |   |   |   {-41} returns -41
+|   |   |   {-41} gets value -41 by min
+|   |   {-19} gets value -19 by max
+|   {-25} gets value -25 by min
+{20} gets value 20 by max
+MINIMAX ALPHA-BETA LEFT
+20
+{None} opened
+|   {None} opened
+|   |   {None} opened
+|   |   |   {None} opened
+|   |   |   |   {20} returns 20
+|   |   |   |   {33} returns 33
+|   |   |   {20} closed with value 20
+|   |   |   {None} opened
+|   |   |   |   {-45} returns -45
+|   |   |   {-45} closed prematurely with -45 <= 20 (alpha)
+|   |   {20} closed with value 20
+|   |   {None} opened
+|   |   |   {None} opened
+|   |   |   |   {24} returns 24
+|   |   |   |   {25} returns 25
+|   |   |   {24} closed with value 24
+|   |   {24} closed prematurely with 24 >= 20 (beta)
+|   {20} closed with value 20
+|   {None} opened
+|   |   {None} opened
+|   |   |   {None} opened
+|   |   |   |   {40} returns 40
+|   |   |   |   {-25} returns -25
+|   |   |   {-25} closed prematurely with -25 <= 20 (alpha)
+|   |   |   {None} opened
+|   |   |   |   {18} returns 18
+|   |   |   {18} closed prematurely with 18 <= 20 (alpha)
+|   |   {18} closed with value 18
+|   {18} closed prematurely with 18 <= 20 (alpha)
+{20} closed with value 20
+MINIMAX ALPHA-BETA RIGHT
+20
+{None} opened
+|   {None} opened
+|   |   {None} opened
+|   |   |   {None} opened
+|   |   |   |   {-41} returns -41
+|   |   |   |   {36} returns 36
+|   |   |   {-41} closed with value -41
+|   |   |   {None} opened
+|   |   |   |   {-19} returns -19
+|   |   |   |   {24} returns 24
+|   |   |   {-19} closed with value -19
+|   |   {-19} closed with value -19
+|   |   {None} opened
+|   |   |   {None} opened
+|   |   |   |   {-42} returns -42
+|   |   |   |   {18} returns 18
+|   |   |   {-42} closed with value -42
+|   |   |   {None} opened
+|   |   |   |   {-25} returns -25
+|   |   |   |   {40} returns 40
+|   |   |   {-25} closed with value -25
+|   |   {-25} closed with value -25
+|   {-25} closed with value -25
+|   {None} opened
+|   |   {None} opened
+|   |   |   {None} opened
+|   |   |   |   {20} returns 20
+|   |   |   |   {-10} returns -10
+|   |   |   {-10} closed with value -10
+|   |   |   {None} opened
+|   |   |   |   {25} returns 25
+|   |   |   |   {24} returns 24
+|   |   |   {24} closed with value 24
+|   |   {24} closed with value 24
+|   |   {None} opened
+|   |   |   {None} opened
+|   |   |   |   {31} returns 31
+|   |   |   |   {-45} returns -45
+|   |   |   {-45} closed prematurely with -45 <= -25 (alpha)
+|   |   |   {None} opened
+|   |   |   |   {33} returns 33
+|   |   |   |   {20} returns 20
+|   |   |   {20} closed with value 20
+|   |   {20} closed with value 20
+|   {20} closed with value 20
+{20} closed with value 20
+\end{verbatim}
+
+\newpage
+
+\section{Questão 10}
+
+\begin{verbatim}
+MINIMAX
+-1
+{(None, 5)} opened
+|   {(None, 4)} opened
+|   |   {(None, 3)} opened
+|   |   |   {(None, 2)} opened
+|   |   |   |   {(None, 1)} opened
+|   |   |   |   |   |   {(-1, 0)} returns (-1, 0)
+|   |   |   |   {(-1, 1)} gets value (-1, 1) by max
+|   |   |   |   |   {(1, 0)} returns (1, 0)
+|   |   |   {(-1, 2)} gets value (-1, 2) by min
+|   |   |   {(None, 1)} opened
+|   |   |   |   |   {(1, 0)} returns (1, 0)
+|   |   |   {(1, 1)} gets value (1, 1) by min
+|   |   |   |   {(-1, 0)} returns (-1, 0)
+|   |   {(1, 3)} gets value (1, 3) by max
+|   |   {(None, 2)} opened
+|   |   |   {(None, 1)} opened
+|   |   |   |   |   {(1, 0)} returns (1, 0)
+|   |   |   {(1, 1)} gets value (1, 1) by min
+|   |   |   |   {(-1, 0)} returns (-1, 0)
+|   |   {(1, 2)} gets value (1, 2) by max
+|   |   {(None, 1)} opened
+|   |   |   |   {(-1, 0)} returns (-1, 0)
+|   |   {(-1, 1)} gets value (-1, 1) by max
+|   {(-1, 4)} gets value (-1, 4) by min
+|   {(None, 3)} opened
+|   |   {(None, 2)} opened
+|   |   |   {(None, 1)} opened
+|   |   |   |   |   {(1, 0)} returns (1, 0)
+|   |   |   {(1, 1)} gets value (1, 1) by min
+|   |   |   |   {(-1, 0)} returns (-1, 0)
+|   |   {(1, 2)} gets value (1, 2) by max
+|   |   {(None, 1)} opened
+|   |   |   |   {(-1, 0)} returns (-1, 0)
+|   |   {(-1, 1)} gets value (-1, 1) by max
+|   |   |   {(1, 0)} returns (1, 0)
+|   {(-1, 3)} gets value (-1, 3) by min
+|   {(None, 2)} opened
+|   |   {(None, 1)} opened
+|   |   |   |   {(-1, 0)} returns (-1, 0)
+|   |   {(-1, 1)} gets value (-1, 1) by max
+|   |   |   {(1, 0)} returns (1, 0)
+|   {(-1, 2)} gets value (-1, 2) by min
+{(-1, 5)} gets value (-1, 5) by max
+MINIMAX ALPHA-BETA LEFT
+-1
+{(None, 5)} opened
+|   {(None, 4)} opened
+|   |   {(None, 3)} opened
+|   |   |   {(None, 2)} opened
+|   |   |   |   {(None, 1)} opened
+|   |   |   |   |   {(-1, 0)} returns -1
+|   |   |   |   {(-1, 1)} closed with value -1
+|   |   |   |   |   {(1, 0)} returns 1
+|   |   |   {(-1, 2)} closed with value -1
+|   |   |   {(None, 1)} opened
+|   |   |   |   |   {(1, 0)} returns 1
+|   |   |   {(1, 1)} closed with value 1
+|   |   |   {(-1, 0)} returns -1
+|   |   {(1, 3)} closed with value 1
+|   |   {(None, 2)} opened
+|   |   |   {(None, 1)} opened
+|   |   |   |   |   {(1, 0)} returns 1
+|   |   |   {(1, 1)} closed with value 1
+|   |   {(1, 2)} closed prematurely with 1 >= 1 (beta)
+|   |   {(None, 1)} opened
+|   |   |   {(-1, 0)} returns -1
+|   |   {(-1, 1)} closed with value -1
+|   {(-1, 4)} closed with value -1
+|   {(None, 3)} opened
+|   |   {(None, 2)} opened
+|   |   |   {(None, 1)} opened
+|   |   |   |   |   {(1, 0)} returns 1
+|   |   |   {(1, 1)} closed with value 1
+|   |   |   {(-1, 0)} returns -1
+|   |   {(1, 2)} closed with value 1
+|   |   {(None, 1)} opened
+|   |   |   {(-1, 0)} returns -1
+|   |   {(-1, 1)} closed with value -1
+|   {(-1, 3)} closed prematurely with -1 <= -1 (alpha)
+|   {(None, 2)} opened
+|   |   {(None, 1)} opened
+|   |   |   {(-1, 0)} returns -1
+|   |   {(-1, 1)} closed with value -1
+|   {(-1, 2)} closed prematurely with -1 <= -1 (alpha)
+{(-1, 5)} closed with value -1
+MINIMAX ALPHA-BETA RIGHT
+-1
+{(None, 5)} opened
+|   {(None, 2)} opened
+|   |   {(1, 0)} returns 1
+|   |   {(None, 1)} opened
+|   |   |   {(-1, 0)} returns -1
+|   |   {(-1, 1)} closed with value -1
+|   {(-1, 2)} closed with value -1
+|   {(None, 3)} opened
+|   |   {(1, 0)} returns 1
+|   |   {(None, 1)} opened
+|   |   |   {(-1, 0)} returns -1
+|   |   {(-1, 1)} closed with value -1
+|   {(-1, 3)} closed prematurely with -1 <= -1 (alpha)
+|   {(None, 4)} opened
+|   |   {(None, 1)} opened
+|   |   |   {(-1, 0)} returns -1
+|   |   {(-1, 1)} closed with value -1
+|   {(-1, 4)} closed prematurely with -1 <= -1 (alpha)
+{(-1, 5)} closed with value -1
+\end{verbatim}
+
+\end{document}
+

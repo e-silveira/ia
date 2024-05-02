@@ -1,0 +1,98 @@
+TREE:
+{a, 0}
+|   {b, 1}
+|   |   {e, 2}
+|   |   {f, 2}
+|   {b, 1}
+|   {d, 1}
+|   |   {j, 2}
+FOUND GOAL:
+{j, 2} with cost 2
+SOLUTION:
+[('a', 'd', 'taking 3', 1), ('d', 'j', 'taking 9', 1)]
+HISTORY:
+{a, 0} inserted in QUEUE
+[{a, 0}]
+---
+a inserted in REACHED
+['a']
+---
+{a, 0} removed from QUEUE
+[]
+---
+{b, 1} inserted in QUEUE
+[{b, 1}]
+---
+b inserted in REACHED
+['a', 'b']
+---
+{d, 1} inserted in QUEUE
+[{b, 1}, {d, 1}]
+---
+d inserted in REACHED
+['a', 'b', 'd']
+---
+{b, 1} removed from QUEUE
+[{d, 1}]
+---
+{e, 2} inserted in QUEUE
+[{d, 1}, {e, 2}]
+---
+e inserted in REACHED
+['a', 'b', 'd', 'e']
+---
+{f, 2} inserted in QUEUE
+[{d, 1}, {e, 2}, {f, 2}]
+---
+f inserted in REACHED
+['a', 'b', 'd', 'e', 'f']
+---
+{d, 1} removed from QUEUE
+[{e, 2}, {f, 2}]
+---
+--------------------------------------------------
+
+TREE:
+{a, 0}
+|   {b, 1}
+|   |   {e, 2}
+|   |   |   {k, 3}
+|   |   |   |   {f, 4}
+|   |   |   {l, 3}
+|   |   |   |   {h, 4}
+|   |   {f, 2}
+|   {b, 1}
+|   {d, 1}
+|   |   {j, 2}
+FOUND GOAL:
+{j, 2} with cost 2
+SOLUTION:
+[('a', 'd', 'taking 3', 1), ('d', 'j', 'taking 9', 1)]
+HISTORY:
+a inserted in REACHED
+['a']
+---
+b inserted in REACHED
+['a', 'b']
+---
+e inserted in REACHED
+['a', 'b', 'e']
+---
+k inserted in REACHED
+['a', 'b', 'e', 'k']
+---
+f inserted in REACHED
+['a', 'b', 'e', 'k', 'f']
+---
+l inserted in REACHED
+['a', 'b', 'e', 'k', 'f', 'l']
+---
+h inserted in REACHED
+['a', 'b', 'e', 'k', 'f', 'l', 'h']
+---
+d inserted in REACHED
+['a', 'b', 'e', 'k', 'f', 'l', 'h', 'd']
+---
+j inserted in REACHED
+['a', 'b', 'e', 'k', 'f', 'l', 'h', 'd', 'j']
+---

@@ -1,0 +1,112 @@
+TREE:
+{a, 0}
+|   {b, 7}
+|   |   {a, 14}
+|   |   {f, 8}
+|   |   |   {b, 11}
+|   |   |   {g, 10}
+|   |   {i, 11}
+|   |   |   {b, 15}
+|   |   |   {k, 16}
+|   {c, 9}
+|   |   {a, 18}
+|   |   {j, 14}
+|   {d, 3}
+FOUND GOAL:
+{k, 16} with cost 16
+SOLUTION:
+[('b', 7), ('i', 4), ('k', 5)]
+HISTORY:
+{a, 0} inserted in PRIORITY QUEUE with priority 0
+[(0, {a, 0})]
+---
+a inserted in REACHED with value 0
+{'a': {a, 0}}
+---
+{a, 0} removed from PRIORITY QUEUE
+[]
+---
+b inserted in REACHED with value 7
+{'a': {a, 0}, 'b': {b, 7}}
+---
+{b, 7} inserted in PRIORITY QUEUE with priority 14
+[(14, {b, 7})]
+---
+c inserted in REACHED with value 9
+{'a': {a, 0}, 'b': {b, 7}, 'c': {c, 9}}
+---
+{c, 9} inserted in PRIORITY QUEUE with priority 15
+[(14, {b, 7}), (15, {c, 9})]
+---
+d inserted in REACHED with value 3
+{'a': {a, 0}, 'b': {b, 7}, 'c': {c, 9}, 'd': {d, 3}}
+---
+{d, 3} inserted in PRIORITY QUEUE with priority 17
+[(14, {b, 7}), (15, {c, 9}), (17, {d, 3})]
+---
+{b, 7} removed from PRIORITY QUEUE
+[(15, {c, 9}), (17, {d, 3})]
+---
+f inserted in REACHED with value 8
+{'a': {a, 0}, 'b': {b, 7}, 'c': {c, 9}, 'd': {d, 3}, 'f': {f, 8}}
+---
+{f, 8} inserted in PRIORITY QUEUE with priority 15
+[(15, {c, 9}), (15, {f, 8}), (17, {d, 3})]
+---
+i inserted in REACHED with value 11
+{'a': {a, 0}, 'b': {b, 7}, 'c': {c, 9}, 'd': {d, 3}, 'f': {f, 8}, 'i': {i, 11}}
+---
+{i, 11} inserted in PRIORITY QUEUE with priority 16
+[(15, {c, 9}), (15, {f, 8}), (16, {i, 11}), (17, {d, 3})]
+---
+{c, 9} removed from PRIORITY QUEUE
+[(15, {f, 8}), (16, {i, 11}), (17, {d, 3})]
+---
+j inserted in REACHED with value 14
+{'a': {a, 0},
+ 'b': {b, 7},
+ 'c': {c, 9},
+ 'd': {d, 3},
+ 'f': {f, 8},
+ 'i': {i, 11},
+ 'j': {j, 14}}
+---
+{j, 14} inserted in PRIORITY QUEUE with priority 17
+[(15, {f, 8}), (16, {i, 11}), (17, {d, 3}), (17, {j, 14})]
+---
+{f, 8} removed from PRIORITY QUEUE
+[(16, {i, 11}), (17, {d, 3}), (17, {j, 14})]
+---
+g inserted in REACHED with value 10
+{'a': {a, 0},
+ 'b': {b, 7},
+ 'c': {c, 9},
+ 'd': {d, 3},
+ 'f': {f, 8},
+ 'g': {g, 10},
+ 'i': {i, 11},
+ 'j': {j, 14}}
+---
+{g, 10} inserted in PRIORITY QUEUE with priority 18
+[(16, {i, 11}), (17, {d, 3}), (17, {j, 14}), (18, {g, 10})]
+---
+{i, 11} removed from PRIORITY QUEUE
+[(17, {d, 3}), (17, {j, 14}), (18, {g, 10})]
+---
+k inserted in REACHED with value 16
+{'a': {a, 0},
+ 'b': {b, 7},
+ 'c': {c, 9},
+ 'd': {d, 3},
+ 'f': {f, 8},
+ 'g': {g, 10},
+ 'i': {i, 11},
+ 'j': {j, 14},
+ 'k': {k, 16}}
+---
+{k, 16} inserted in PRIORITY QUEUE with priority 16
+[(16, {k, 16}), (17, {d, 3}), (17, {j, 14}), (18, {g, 10})]
+---
+{k, 16} removed from PRIORITY QUEUE
+[(17, {d, 3}), (17, {j, 14}), (18, {g, 10})]
+---

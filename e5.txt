@@ -1,72 +1,227 @@
+GREEDY BEST FIRST
+TREE:
+{a, 0}
+|   {b, 1}
+|   |   {a, 2}
+|   |   {c, 8}
+|   |   {e, 7}
+|   |   {f, 2}
+|   |   |   {b, 3}
+|   |   |   {c, 9}
+|   |   |   {d, 6}
+|   |   |   {h, 6}
+|   {c, 9}
+|   {d, 4}
+|   |   {a, 8}
+|   |   {f, 8}
+|   |   {g, 9}
+FOUND GOAL:
+{h, 6} with cost 6
 SOLUTION:
 [('b', 1), ('f', 1), ('h', 4)]
 HISTORY:
-a inserted in PRIORITY QUEUE
-[g, e, c, c]
+{a, 0} inserted in PRIORITY QUEUE with priority 0
+[(0, {a, 0})]
 ---
 a inserted in REACHED with value 0
-{'a': a, 'b': b, 'c': c, 'd': d, 'e': e, 'f': f, 'g': g, 'h': h}
+{'a': {a, 0}}
 ---
-a removed from PRIORITY QUEUE
-[g, e, c, c]
+{a, 0} removed from PRIORITY QUEUE
+[]
 ---
 b inserted in REACHED with value 1
-{'a': a, 'b': b, 'c': c, 'd': d, 'e': e, 'f': f, 'g': g, 'h': h}
+{'a': {a, 0}, 'b': {b, 1}}
 ---
-b inserted in PRIORITY QUEUE
-[g, e, c, c]
+{b, 1} inserted in PRIORITY QUEUE with priority 1
+[(1, {b, 1})]
 ---
 c inserted in REACHED with value 9
-{'a': a, 'b': b, 'c': c, 'd': d, 'e': e, 'f': f, 'g': g, 'h': h}
+{'a': {a, 0}, 'b': {b, 1}, 'c': {c, 9}}
 ---
-c inserted in PRIORITY QUEUE
-[g, e, c, c]
+{c, 9} inserted in PRIORITY QUEUE with priority 9
+[(1, {b, 1}), (9, {c, 9})]
 ---
 d inserted in REACHED with value 4
-{'a': a, 'b': b, 'c': c, 'd': d, 'e': e, 'f': f, 'g': g, 'h': h}
+{'a': {a, 0}, 'b': {b, 1}, 'c': {c, 9}, 'd': {d, 4}}
 ---
-d inserted in PRIORITY QUEUE
-[g, e, c, c]
+{d, 4} inserted in PRIORITY QUEUE with priority 4
+[(1, {b, 1}), (4, {d, 4}), (9, {c, 9})]
 ---
-b removed from PRIORITY QUEUE
-[g, e, c, c]
+{b, 1} removed from PRIORITY QUEUE
+[(4, {d, 4}), (9, {c, 9})]
 ---
-c updated in REACHED with value 7
-{'a': a, 'b': b, 'c': c, 'd': d, 'e': e, 'f': f, 'g': g, 'h': h}
+c updated in REACHED with value 8
+{'a': {a, 0}, 'b': {b, 1}, 'c': {c, 8}, 'd': {d, 4}}
 ---
-c inserted in PRIORITY QUEUE
-[g, e, c, c]
+{c, 8} update in PRIORITY QUEUE with priority 7
+[(4, {d, 4}), (7, {c, 8})]
 ---
-e inserted in REACHED with value 6
-{'a': a, 'b': b, 'c': c, 'd': d, 'e': e, 'f': f, 'g': g, 'h': h}
+e inserted in REACHED with value 7
+{'a': {a, 0}, 'b': {b, 1}, 'c': {c, 8}, 'd': {d, 4}, 'e': {e, 7}}
 ---
-e inserted in PRIORITY QUEUE
-[g, e, c, c]
+{e, 7} inserted in PRIORITY QUEUE with priority 6
+[(4, {d, 4}), (6, {e, 7}), (7, {c, 8})]
 ---
-f inserted in REACHED with value 1
-{'a': a, 'b': b, 'c': c, 'd': d, 'e': e, 'f': f, 'g': g, 'h': h}
+f inserted in REACHED with value 2
+{'a': {a, 0}, 'b': {b, 1}, 'c': {c, 8}, 'd': {d, 4}, 'e': {e, 7}, 'f': {f, 2}}
 ---
-f inserted in PRIORITY QUEUE
-[g, e, c, c]
+{f, 2} inserted in PRIORITY QUEUE with priority 1
+[(1, {f, 2}), (4, {d, 4}), (6, {e, 7}), (7, {c, 8})]
 ---
-f removed from PRIORITY QUEUE
-[g, e, c, c]
+{f, 2} removed from PRIORITY QUEUE
+[(4, {d, 4}), (6, {e, 7}), (7, {c, 8})]
 ---
-h inserted in REACHED with value 4
-{'a': a, 'b': b, 'c': c, 'd': d, 'e': e, 'f': f, 'g': g, 'h': h}
+h inserted in REACHED with value 6
+{'a': {a, 0},
+ 'b': {b, 1},
+ 'c': {c, 8},
+ 'd': {d, 4},
+ 'e': {e, 7},
+ 'f': {f, 2},
+ 'h': {h, 6}}
 ---
-h inserted in PRIORITY QUEUE
-[g, e, c, c]
+{h, 6} inserted in PRIORITY QUEUE with priority 4
+[(4, {d, 4}), (4, {h, 6}), (6, {e, 7}), (7, {c, 8})]
 ---
-d removed from PRIORITY QUEUE
-[g, e, c, c]
+{d, 4} removed from PRIORITY QUEUE
+[(4, {h, 6}), (6, {e, 7}), (7, {c, 8})]
 ---
-g inserted in REACHED with value 5
-{'a': a, 'b': b, 'c': c, 'd': d, 'e': e, 'f': f, 'g': g, 'h': h}
+g inserted in REACHED with value 9
+{'a': {a, 0},
+ 'b': {b, 1},
+ 'c': {c, 8},
+ 'd': {d, 4},
+ 'e': {e, 7},
+ 'f': {f, 2},
+ 'g': {g, 9},
+ 'h': {h, 6}}
 ---
-g inserted in PRIORITY QUEUE
-[g, e, c, c]
+{g, 9} inserted in PRIORITY QUEUE with priority 5
+[(4, {h, 6}), (5, {g, 9}), (6, {e, 7}), (7, {c, 8})]
 ---
-h removed from PRIORITY QUEUE
-[g, e, c, c]
+{h, 6} removed from PRIORITY QUEUE
+[(5, {g, 9}), (6, {e, 7}), (7, {c, 8})]
+---
+BREADTH FIRST
+TREE:
+{a, 0}
+|   {b, 1}
+|   |   {a, 2}
+|   |   {c, 8}
+|   |   {e, 7}
+|   |   |   {b, 13}
+|   |   |   {h, 16}
+|   |   {f, 2}
+|   {c, 9}
+|   |   {a, 18}
+|   |   {b, 16}
+|   |   {f, 16}
+|   {d, 4}
+|   |   {a, 8}
+|   |   {f, 8}
+|   |   {g, 9}
+FOUND GOAL:
+{h, 16} with cost 16
+SOLUTION:
+[('b', 1), ('e', 6), ('h', 9)]
+HISTORY:
+{a, 0} inserted in QUEUE
+[{a, 0}]
+---
+a inserted in REACHED
+['a']
+---
+{a, 0} removed from QUEUE
+[]
+---
+{b, 1} inserted in QUEUE
+[{b, 1}]
+---
+b inserted in REACHED
+['a', 'b']
+---
+{c, 9} inserted in QUEUE
+[{b, 1}, {c, 9}]
+---
+c inserted in REACHED
+['a', 'b', 'c']
+---
+{d, 4} inserted in QUEUE
+[{b, 1}, {c, 9}, {d, 4}]
+---
+d inserted in REACHED
+['a', 'b', 'c', 'd']
+---
+{b, 1} removed from QUEUE
+[{c, 9}, {d, 4}]
+---
+{e, 7} inserted in QUEUE
+[{c, 9}, {d, 4}, {e, 7}]
+---
+e inserted in REACHED
+['a', 'b', 'c', 'd', 'e']
+---
+{f, 2} inserted in QUEUE
+[{c, 9}, {d, 4}, {e, 7}, {f, 2}]
+---
+f inserted in REACHED
+['a', 'b', 'c', 'd', 'e', 'f']
+---
+{c, 9} removed from QUEUE
+[{d, 4}, {e, 7}, {f, 2}]
+---
+{d, 4} removed from QUEUE
+[{e, 7}, {f, 2}]
+---
+{g, 9} inserted in QUEUE
+[{e, 7}, {f, 2}, {g, 9}]
+---
+g inserted in REACHED
+['a', 'b', 'c', 'd', 'e', 'f', 'g']
+---
+{e, 7} removed from QUEUE
+[{f, 2}, {g, 9}]
+---
+DEPTH FIRST
+TREE:
+{a, 0}
+|   {b, 1}
+|   |   {a, 2}
+|   |   {c, 8}
+|   |   |   {a, 17}
+|   |   |   {b, 15}
+|   |   |   {f, 15}
+|   |   |   |   {b, 16}
+|   |   |   |   {c, 22}
+|   |   |   |   {d, 19}
+|   |   |   |   |   {a, 23}
+|   |   |   |   |   {f, 23}
+|   |   |   |   |   {g, 24}
+|   |   |   |   |   |   {d, 29}
+|   |   |   |   |   |   {h, 25}
+FOUND GOAL:
+{h, 25} with cost 25
+SOLUTION:
+[('b', 1), ('c', 7), ('f', 7), ('d', 4), ('g', 5), ('h', 1)]
+HISTORY:
+a inserted in REACHED
+['a']
+---
+b inserted in REACHED
+['a', 'b']
+---
+c inserted in REACHED
+['a', 'b', 'c']
+---
+f inserted in REACHED
+['a', 'b', 'c', 'f']
+---
+d inserted in REACHED
+['a', 'b', 'c', 'f', 'd']
+---
+g inserted in REACHED
+['a', 'b', 'c', 'f', 'd', 'g']
+---
+h inserted in REACHED
+['a', 'b', 'c', 'f', 'd', 'g', 'h']
 ---

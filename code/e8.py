@@ -92,8 +92,12 @@ if __name__ == "__main__":
     e8 = E8(state, goal, 3, 3)
     heuristic = make_heuristic(3, 3, goal)
 
+    print("GREEDY BEST FIRST - COST 1")
+
     node, logs = best_first(e8, lambda _: 1)
     print_solution(node, logs)
+
+    print("GREEDY BEST FIRST - HEURISTIC")
 
     node, logs = best_first(e8, heuristic)
     print_solution(node, logs)
@@ -101,6 +105,8 @@ if __name__ == "__main__":
     state = (1, 2, 3, 0, 6, 4, 8, 7, 5)
 
     e8b = E8(state, goal, 3, 3)
+
+    print("A*")
 
     node, logs = best_first(e8, lambda node: node.path_cost + heuristic(node))
     print_solution(node, logs)

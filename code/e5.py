@@ -3,6 +3,7 @@ from best_first import best_first
 from breadth_first import breadth_first
 from depth_first import depth_first
 from help import print_solution
+from node import print_tree
 
 
 class E5(Problem):
@@ -39,11 +40,26 @@ def heuristic(node):
 if __name__ == "__main__":
     e5 = E5("a", "h")
 
+    print("GREEDY BEST FIRST")
+
     node, logs = best_first(e5, heuristic)
+    if node:
+        print("TREE:")
+        print_tree(node.get_root())
     print_solution(node, logs)
+
+    print("BREADTH FIRST")
 
     node, logs = breadth_first(e5)
+    if node:
+        print("TREE:")
+        print_tree(node.get_root())
     print_solution(node, logs)
 
+    print("DEPTH FIRST")
+
     node, logs = depth_first(e5)
+    if node:
+        print("TREE:")
+        print_tree(node.get_root())
     print_solution(node, logs)

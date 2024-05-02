@@ -28,18 +28,18 @@ def print_tree(root):
 def minimax(root):
     logs = []
 
-    shift = 4
+    shift = 1
     spaces = [0]
 
     def __minimax(tree, f):
         if len(tree.children) == 0:
-            logs.append(f"{' ' * (spaces[0] + shift)}{tree} returns {tree.value}")
+            logs.append(f"{'|   ' * (spaces[0] + shift)}{tree} returns {tree.value}")
             tree.value = (1 if f == max else -1, 0)
             return tree.value[0]
 
         values = []
 
-        logs.append(f"{' ' * spaces[0]}{tree} opened")
+        logs.append(f"{'|   ' * spaces[0]}{tree} opened")
 
         spaces[0] += shift
         
@@ -51,7 +51,7 @@ def minimax(root):
         spaces[0] -= shift 
 
         tree.value = (f(values), tree.value[1])
-        logs.append(f"{' ' * spaces[0]}{tree} gets value {tree.value} by {'max' if f == max else 'min'}")
+        logs.append(f"{'|   ' * spaces[0]}{tree} gets value {tree.value} by {'max' if f == max else 'min'}")
 
         return tree.value[0]
 
@@ -61,17 +61,17 @@ def minimax_alpha_beta(root):
 
     logs = []
 
-    shift = 4
+    shift = 1
     spaces = [0]
 
     def min_value(tree, alpha, beta):
         if len(tree.children) == 0:
-            logs.append(f"{' ' * (spaces[0] + shift)}{tree} returns {tree.value[0]}")
+            logs.append(f"{'|   ' * (spaces[0])}{tree} returns {tree.value[0]}")
             return tree.value[0]
 
         v = inf
         
-        logs.append(f"{' ' * spaces[0]}{tree} opened")
+        logs.append(f"{'|   ' * spaces[0]}{tree} opened")
 
         spaces[0] += shift
 
@@ -84,22 +84,22 @@ def minimax_alpha_beta(root):
             if v <= alpha:
                 spaces[0] -= shift
                 tree.value = (v, tree.value[1])
-                logs.append(f"{' ' * spaces[0]}{tree} closed prematurely with {v} <= {alpha} (alpha)")
+                logs.append(f"{'|   ' * spaces[0]}{tree} closed prematurely with {v} <= {alpha} (alpha)")
                 return v
 
         spaces[0] -= shift
         tree.value = (v, tree.value[1])
-        logs.append(f"{' ' * spaces[0]}{tree} closed with value {v}")
+        logs.append(f"{'|   ' * spaces[0]}{tree} closed with value {v}")
         return v
 
     def max_value(tree, alpha, beta):
         if len(tree.children) == 0:
-            logs.append(f"{' ' * (spaces[0] + shift)}{tree} returns {tree.value[0]}")
+            logs.append(f"{'|   ' * (spaces[0] + shift)}{tree} returns {tree.value[0]}")
             return tree.value[0]
 
         v = -inf
 
-        logs.append(f"{' ' * spaces[0]}{tree} opened")
+        logs.append(f"{'|   ' * spaces[0]}{tree} opened")
 
         spaces[0] += shift
         
@@ -111,12 +111,12 @@ def minimax_alpha_beta(root):
             if v >= beta:
                 spaces[0] -= shift
                 tree.value = (v, tree.value[1])
-                logs.append(f"{' ' * spaces[0]}{tree} closed prematurely with {v} >= {beta} (beta)")
+                logs.append(f"{'|   ' * spaces[0]}{tree} closed prematurely with {v} >= {beta} (beta)")
                 return v
 
         spaces[0] -= shift
         tree.value = (v, tree.value[1])
-        logs.append(f"{' ' * spaces[0]}{tree} closed with value {v}")
+        logs.append(f"{'|   ' * spaces[0]}{tree} closed with value {v}")
         return v
 
     return max_value(root, -inf, inf), logs
@@ -125,17 +125,17 @@ def rminimax_alpha_beta(root):
 
     logs = []
 
-    shift = 4
+    shift = 1
     spaces = [0]
 
     def min_value(tree, alpha, beta):
         if len(tree.children) == 0:
-            logs.append(f"{' ' * (spaces[0] + shift)}{tree} returns {tree.value[0]}")
+            logs.append(f"{'|   ' * (spaces[0])}{tree} returns {tree.value[0]}")
             return tree.value[0]
 
         v = inf
         
-        logs.append(f"{' ' * spaces[0]}{tree} opened")
+        logs.append(f"{'|   ' * spaces[0]}{tree} opened")
 
         spaces[0] += shift
 
@@ -148,22 +148,22 @@ def rminimax_alpha_beta(root):
             if v <= alpha:
                 spaces[0] -= shift
                 tree.value = (v, tree.value[1])
-                logs.append(f"{' ' * spaces[0]}{tree} closed prematurely with {v} <= {alpha} (alpha)")
+                logs.append(f"{'|   ' * spaces[0]}{tree} closed prematurely with {v} <= {alpha} (alpha)")
                 return v
 
         spaces[0] -= shift
         tree.value = (v, tree.value[1])
-        logs.append(f"{' ' * spaces[0]}{tree} closed with value {v}")
+        logs.append(f"{'|   ' * spaces[0]}{tree} closed with value {v}")
         return v
 
     def max_value(tree, alpha, beta):
         if len(tree.children) == 0:
-            logs.append(f"{' ' * (spaces[0] + shift)}{tree} returns {tree.value[0]}")
+            logs.append(f"{'|   ' * (spaces[0])}{tree} returns {tree.value[0]}")
             return tree.value[0]
 
         v = -inf
 
-        logs.append(f"{' ' * spaces[0]}{tree} opened")
+        logs.append(f"{'|   ' * spaces[0]}{tree} opened")
 
         spaces[0] += shift
         
@@ -175,27 +175,33 @@ def rminimax_alpha_beta(root):
             if v >= beta:
                 spaces[0] -= shift
                 tree.value = (v, tree.value[1])
-                logs.append(f"{' ' * spaces[0]}{tree} closed prematurely with {v} >= {beta} (beta)")
+                logs.append(f"{'|   ' * spaces[0]}{tree} closed prematurely with {v} >= {beta} (beta)")
                 return v
 
         spaces[0] -= shift
         tree.value = (v, tree.value[1])
-        logs.append(f"{' ' * spaces[0]}{tree} closed with value {v}")
+        logs.append(f"{'|   ' * spaces[0]}{tree} closed with value {v}")
         return v
     return max_value(root, -inf, inf), logs
 
 if __name__ == "__main__":
     tree = make_tree(5)
+    print("MINIMAX")
     value, logs = minimax(tree)
     print(value)
-    pprint(logs)
+    for log in logs:
+        print(log)
 
+    print("MINIMAX ALPHA-BETA LEFT")
     tree = make_tree(5)
     value, logs = minimax_alpha_beta(tree)
     print(value)
-    pprint(logs)
+    for log in logs:
+        print(log)
 
+    print("MINIMAX ALPHA-BETA RIGHT")
     tree = make_tree(5)
     value, logs = rminimax_alpha_beta(tree)
     print(value)
-    pprint(logs)
+    for log in logs:
+        print(log)

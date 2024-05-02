@@ -1,6 +1,7 @@
 from problem import Problem
 from best_first import best_first
 from help import print_solution
+from node import print_tree
 
 class E6(Problem):
     def actions(self, state):
@@ -54,4 +55,7 @@ if __name__ == "__main__":
     e6 = E6("a", "k")
 
     node, logs = best_first(e6, heuristic)
+    if node:
+        print("TREE:")
+        print_tree(node.get_root())
     print_solution(node, logs)
