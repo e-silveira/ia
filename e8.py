@@ -2,6 +2,7 @@ from problem import Problem
 from best_first import best_first
 from breadth_first import breadth_first
 from help import print_solution
+from node import print_tree
 
 
 def get_indices(matrix, nrow, ncol, value):

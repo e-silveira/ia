@@ -5,7 +5,7 @@ def expand(problem, node):
     for action in problem.actions(s):
         s_ = problem.result(action)
         cost = node.path_cost + problem.action_cost(action)
-        yield Node(state=s_, parent=node, action=action, path_cost=cost)
+        yield node.child(state=s_, parent=node, action=action, path_cost=cost)
 
 def depth_first(problem):
 
