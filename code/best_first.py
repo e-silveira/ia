@@ -1,9 +1,38 @@
 from node import Node
 from expand import expand
 from container import PriorityQueue
+from problem import Problem
+from typing import Any, Callable
 
 
-def best_first(problem, h):
+def best_first(problem: Problem, h: Callable[[Any], int]) -> Node | None:
+    node: Node = Node(state=problem.initial, path_cost=0)
+
+    pq: PriorityQueue = PriorityQueue()
+    reached: dict[Any, Node] = {}
+
+    pq.insert(0, node)
+    reached[node.state] = node
+
+    while not pq.empty():
+        node: Node = pq.remove()
+
+        if problem.is_goal(node.state):
+            return node
+
+        for child in expand(problem, node):
+            s: Any = child.state
+
+            if s not in reached:
+                reached[s] = child
+                pq.insert(h(child), child)
+            elif child.path_cost < reached[s].path_cost:
+                reached[s] = child
+                pq.update(h(child), child)
+
+    return None
+
+def best_first_with_logs(problem, h):
     node = Node(state=problem.initial, path_cost=0)
 
     logs = []

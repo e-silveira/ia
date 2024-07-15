@@ -1,9 +1,38 @@
 from node import Node
+from problem import Problem
 from container import Queue
 from expand import expand
+from typing import Any
 
 
-def breadth_first(problem):
+def breadth_first(problem: Problem) -> Node | None:
+    root: Node = Node(state=problem.initial)
+
+    if problem.is_goal(root.state):
+        return root
+
+    q: Queue = Queue()
+    q.insert(root)
+
+    reached: Any = []
+    reached.append(root.state)
+
+    while not q.is_empty():
+        node: Node = q.remove()
+
+        for child in expand(problem, node):
+            s: Any = child.state
+
+            if problem.is_goal(s):
+                return child
+
+            if child.state not in reached:
+                q.insert(child)
+                reached.append(child.state)
+
+    return None
+
+def breadth_first_with_logs(problem):
     root = Node(state=problem.initial)
 
     logs = []

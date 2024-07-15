@@ -1,8 +1,7 @@
 from itertools import product
 from problem import Problem
-from breadth_first import breadth_first
+from breadth_first import breadth_first_with_logs
 from help import print_solution
-from node import print_tree
 
 def apply_transition(state, transition):
     (m, c) = transition
@@ -65,9 +64,5 @@ class E1(Problem):
 if __name__ == "__main__":
     e1 = E1((3, 3, 0), (0, 0, 1), 3, 3, 2)
 
-    node, logs = breadth_first(e1)
-
-    if node:
-        print("TREE:")
-        print_tree(node.get_root())
-        print_solution(node, logs)
+    node, logs = breadth_first_with_logs(e1)
+    print_solution(node, logs)

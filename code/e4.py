@@ -1,7 +1,6 @@
 from problem import Problem
-from breadth_first import breadth_first
-from depth_first import depth_first
-from node import print_tree
+from breadth_first import breadth_first_with_logs
+from depth_first import depth_first_with_logs
 from help import print_solution
 
 class E4(Problem):
@@ -35,15 +34,12 @@ class E4(Problem):
         return state == self.goal
 
 if __name__ == "__main__":
-
     e4 = E4("a", "j") 
 
     print("+++ BREADTH FIRST SEARCH +++")
-    node, logs = breadth_first(e4)
-    if node:
-        print_solution(node, logs)
+    node, logs = breadth_first_with_logs(e4)
+    print_solution(node, logs)
 
     print("+++ DEPTH FIRST SEARCH +++")
-    node, logs = depth_first(e4)
-    if node:
-        print_solution(node, logs)
+    node, logs = depth_first_with_logs(e4)
+    print_solution(node, logs)

@@ -1,7 +1,7 @@
 from problem import Problem
-from best_first import best_first
+from best_first import best_first_with_logs
 from help import print_solution
-from node import print_tree
+
 
 class E6(Problem):
     def actions(self, state):
@@ -17,7 +17,7 @@ class E6(Problem):
             "i": [("b", 4), ("k", 5)],
             "j": [("c", 5), ("l", 6)],
             "k": [("i", 5), ("l", 4)],
-            "l": [("j", 6), ("k", 4)]
+            "l": [("j", 6), ("k", 4)],
         }
 
         return actions[state]
@@ -33,10 +33,11 @@ class E6(Problem):
     def is_goal(self, state):
         return state == self.goal
 
+
 def heuristic(node):
     heuristic = {
         "a": 15,
-        "b": 7, 
+        "b": 7,
         "c": 6,
         "d": 14,
         "e": 15,
@@ -46,16 +47,14 @@ def heuristic(node):
         "i": 5,
         "j": 3,
         "k": 0,
-        "l": 4
+        "l": 4,
     }
 
     return heuristic[node.state]
 
+
 if __name__ == "__main__":
     e6 = E6("a", "k")
 
-    node, logs = best_first(e6, heuristic)
-    if node:
-        print("TREE:")
-        print_tree(node.get_root())
+    node, logs = best_first_with_logs(e6, heuristic)
     print_solution(node, logs)

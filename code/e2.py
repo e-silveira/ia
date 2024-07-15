@@ -1,8 +1,7 @@
-from breadth_first import breadth_first
+from breadth_first import breadth_first_with_logs
 from problem import Problem
 from help import print_solution
-from pprint import pprint
-from node import print_tree
+
 
 class E2(Problem):
     def actions(self, state):
@@ -37,10 +36,10 @@ class E2(Problem):
         actions = map(lambda t: (state, t[0], t[1], 1), actions)
 
         return list(actions)
-    
-    def action_cost(self,action):
+
+    def action_cost(self, action):
         (_, _, _, cost) = action
-        return cost 
+        return cost
 
     def result(self, action):
         (_, state, _, _) = action
@@ -49,11 +48,9 @@ class E2(Problem):
     def is_goal(self, state):
         return state[1] == 2
 
+
 if __name__ == "__main__":
     e2 = E2((0, 0), (None, 2))
-    node, logs = breadth_first(e2)
 
-    if node:
-        print("TREE:")
-        print_tree(node.get_root())
-        print_solution(node, logs) 
+    node, logs = breadth_first_with_logs(e2)
+    print_solution(node, logs)

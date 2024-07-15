@@ -1,6 +1,7 @@
 from problem import Problem
-from depth_first import depth_first
+from depth_first import depth_first_with_logs
 from help import print_solution
+
 
 class E3(Problem):
     def actions(self, state):
@@ -72,10 +73,9 @@ class E3(Problem):
     def is_goal(self, state):
         return state == ("r", "r", "r", "r")
 
+
 if __name__ == "__main__":
     e3 = E3(("l", "l", "l", "l"), ("r", "r", "r", "r"))
 
-    node, logs = depth_first(e3)
-
-    if node:
-        print_solution(node, logs)
+    node, logs = depth_first_with_logs(e3)
+    print_solution(node, logs)

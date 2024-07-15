@@ -1,18 +1,30 @@
 from problem import Problem
-from best_first import best_first
-from breadth_first import breadth_first
+from best_first import best_first_with_logs
 from help import print_solution
-from node import print_tree
 
 
-def get_indices(matrix, nrow, ncol, value):
+def get_indices(goal_matrix, nrow, ncol, value):
+    """
+    Retorna os índices de `value` na `goal_matrix`.
+
+    Essa função é usada para calcular a distância entre o local
+    do valor na matriz de objetivo e na matriz do estado atual.
+
+    goal_matrix: matriz de objetivo
+    nrow: número de linhas
+    ncol: número de colunas
+    value: valor que estamos procurando (da matriz de estado).
+    """
     for i in range(nrow):
         for j in range(ncol):
-            if matrix[i * ncol + j] == value:
+            if goal_matrix[i * ncol + j] == value:
                 return i, j
 
 
 def move(state, ncol, i, j, i_, j_):
+    """
+    Faz o swap entre posições na matriz de estado.
+    """
     state = list(state)
     state[i * ncol + j] = state[i_ * ncol + j_]
     state[i_ * ncol + j_] = 0
@@ -20,6 +32,9 @@ def move(state, ncol, i, j, i_, j_):
 
 
 def moves(state, nrow, ncol):
+    """
+    Retorna os possíveis movimentos de acordo com a posição de 0.
+    """
     def moves(i, j):
         moves = []
 
@@ -53,7 +68,6 @@ class E8(Problem):
         return actions
 
     def action_cost(self, action):
-        # action = action
         return 1
 
     def result(self, action):
@@ -68,6 +82,10 @@ def manhattan(i, j, i_, j_):
 
 
 def make_heuristic(nrow, ncol, goal):
+    """
+    Cria a função heurística de acordo com o tamanho
+    da matriz e o estado objetivo.
+    """
     def heuristic(node):
         state = node.state
         mdist = 0
@@ -86,27 +104,22 @@ def make_heuristic(nrow, ncol, goal):
 
 
 if __name__ == "__main__":
-    state = (1, 3, 4, 8, 2, 5, 7, 6, 0)
     goal = (1, 2, 3, 8, 0, 4, 7, 6, 5)
-
-    e8 = E8(state, goal, 3, 3)
     heuristic = make_heuristic(3, 3, goal)
 
-    print("GREEDY BEST FIRST - COST 1")
+    state = (1, 3, 4, 8, 2, 5, 7, 6, 0)
+    e8 = E8(state, goal, 3, 3)
 
-    node, logs = best_first(e8, lambda _: 1)
+    print("+++ GREEDY BEST FIRST - COST 1 +++")
+    node, logs = best_first_with_logs(e8, lambda _: 1)
     print_solution(node, logs)
 
-    print("GREEDY BEST FIRST - HEURISTIC")
-
-    node, logs = best_first(e8, heuristic)
+    print("+++ GREEDY BEST FIRST - HEURISTIC +++")
+    node, logs = best_first_with_logs(e8, heuristic)
     print_solution(node, logs)
 
+    print("+++ A* +++")
     state = (1, 2, 3, 0, 6, 4, 8, 7, 5)
-
     e8b = E8(state, goal, 3, 3)
-
-    print("A*")
-
-    node, logs = best_first(e8, lambda node: node.path_cost + heuristic(node))
+    node, logs = best_first_with_logs(e8, lambda node: node.path_cost + heuristic(node))
     print_solution(node, logs)

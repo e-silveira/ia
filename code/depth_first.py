@@ -1,8 +1,31 @@
 from node import Node
+from problem import Problem
 from expand import expand
+from typing import Any
 
-def depth_first(problem):
 
+def depth_first(problem: Problem) -> Node | None:
+    root: Node = Node(problem.initial)
+
+    reached: Any = []
+    reached.append(root.state)
+
+    def __depth_first(node: Node) -> Node | None:
+        if problem.is_goal(node.state):
+            return node
+
+        for child in expand(problem, node):
+            if child.state not in reached:
+                reached.append(child.state)
+                result: Node | None = __depth_first(child)
+                if result:
+                    return result
+
+        return None
+
+    return __depth_first(root)
+
+def depth_first_with_logs(problem):
     root = Node(problem.initial)
 
     logs = []
@@ -12,7 +35,6 @@ def depth_first(problem):
     logs.append((f"{root.state} inserted in REACHED", reached.copy()))
 
     def _depth_first(node):
-
         if problem.is_goal(node.state):
             return node
 
