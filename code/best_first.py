@@ -32,13 +32,13 @@ def best_first(problem: Problem, h: Callable[[Any], int]) -> Node | None:
 
     return None
 
-def best_first_with_logs(problem, h):
-    node = Node(state=problem.initial, path_cost=0)
+def best_first_with_logs(problem: Problem, h: Callable[[Any], int]):
+    node: Node = Node(state=problem.initial, path_cost=0)
 
     logs = []
 
-    pq = PriorityQueue()
-    reached = {}
+    pq: PriorityQueue = PriorityQueue()
+    reached: dict[Any, Node] = {}
 
     pq.insert(0, node)
     logs.append((f"{node} inserted in PRIORITY QUEUE with priority {0}", pq.copy()))
@@ -52,7 +52,7 @@ def best_first_with_logs(problem, h):
     )
 
     while not pq.empty():
-        node = pq.remove()
+        node: Node = pq.remove()
         logs.append((f"{node} removed from PRIORITY QUEUE", pq.copy()))
 
         if problem.is_goal(node.state):

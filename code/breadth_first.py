@@ -32,28 +32,29 @@ def breadth_first(problem: Problem) -> Node | None:
 
     return None
 
-def breadth_first_with_logs(problem):
-    root = Node(state=problem.initial)
+
+def breadth_first_with_logs(problem: Problem) -> tuple[Node | None, list]:
+    root: Node = Node(state=problem.initial)
 
     logs = []
 
     if problem.is_goal(root.state):
         return root, logs
 
-    q = Queue()
+    q: Queue = Queue()
     q.insert(root)
     logs.append((f"{root} inserted in QUEUE", q.copy()))
 
-    reached = []
+    reached: list[Any] = []
     reached.append(root.state)
     logs.append((f"{root.state} inserted in REACHED", reached.copy()))
 
     while not q.is_empty():
-        node = q.remove()
+        node: Node = q.remove()
         logs.append((f"{node} removed from QUEUE", q.copy()))
 
         for child in expand(problem, node):
-            s = child.state
+            s: Any = child.state
 
             if problem.is_goal(s):
                 return child, logs

@@ -25,16 +25,16 @@ def depth_first(problem: Problem) -> Node | None:
 
     return __depth_first(root)
 
-def depth_first_with_logs(problem):
-    root = Node(problem.initial)
+def depth_first_with_logs(problem: Problem) -> tuple[Node | None, list]:
+    root: Node = Node(problem.initial)
 
     logs = []
-    reached = []
+    reached: list[Any] = []
 
     reached.append(root.state)
     logs.append((f"{root.state} inserted in REACHED", reached.copy()))
 
-    def _depth_first(node):
+    def __depth_first(node):
         if problem.is_goal(node.state):
             return node
 
@@ -43,11 +43,10 @@ def depth_first_with_logs(problem):
                 reached.append(child.state)
                 logs.append((f"{child.state} inserted in REACHED", reached.copy()))
 
-                result = _depth_first(child)
-
+                result: Node | None = __depth_first(child)
                 if result:
                     return result
 
         return None
 
-    return _depth_first(root), logs
+    return __depth_first(root), logs
