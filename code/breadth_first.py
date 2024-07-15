@@ -1,14 +1,9 @@
 from node import Node
 from container import Queue
+from expand import expand
 
-def expand(problem, node):
-    s = node.state
-    for action in problem.actions(s):
-        s_ = problem.result(action)
-        cost = node.path_cost + problem.action_cost(action)
-        yield node.child(state=s_, parent=node, action=action, path_cost=cost)
 
-def breadth_first(problem):  
+def breadth_first(problem):
     root = Node(state=problem.initial)
 
     logs = []
@@ -20,7 +15,7 @@ def breadth_first(problem):
     q.insert(root)
     logs.append((f"{root} inserted in QUEUE", q.copy()))
 
-    reached = [] 
+    reached = []
     reached.append(root.state)
     logs.append((f"{root.state} inserted in REACHED", reached.copy()))
 

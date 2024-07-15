@@ -1,11 +1,5 @@
 from node import Node
-
-def expand(problem, node):
-    s = node.state
-    for action in problem.actions(s):
-        s_ = problem.result(action)
-        cost = node.path_cost + problem.action_cost(action)
-        yield node.child(state=s_, parent=node, action=action, path_cost=cost)
+from expand import expand
 
 def depth_first(problem):
 

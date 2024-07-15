@@ -38,16 +38,12 @@ if __name__ == "__main__":
 
     e4 = E4("a", "j") 
 
+    print("+++ BREADTH FIRST SEARCH +++")
     node, logs = breadth_first(e4)
     if node:
-        print("TREE:")
-        print_tree(node.get_root())
         print_solution(node, logs)
 
-    print("--------------------------------------------------\n")
-
+    print("+++ DEPTH FIRST SEARCH +++")
     node, logs = depth_first(e4)
     if node:
-        print("TREE:")
-        print_tree(node.get_root())
         print_solution(node, logs)

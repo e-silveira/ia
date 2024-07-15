@@ -1,6 +1,5 @@
 from problem import Problem
 from depth_first import depth_first
-from node import print_tree
 from help import print_solution
 
 class E3(Problem):
@@ -79,6 +78,4 @@ if __name__ == "__main__":
     node, logs = depth_first(e3)
 
     if node:
-        print("TREE:")
-        print_tree(node.get_root())
         print_solution(node, logs)
