@@ -25,6 +25,7 @@ def depth_first(problem: Problem) -> Node | None:
 
     return __depth_first(root)
 
+
 def depth_first_with_logs(problem: Problem) -> tuple[Node | None, list]:
     root: Node = Node(problem.initial)
 
