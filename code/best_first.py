@@ -2,6 +2,14 @@ from node import Node
 from container import PriorityQueue
 
 
+def expand(problem, node):
+    s = node.state
+    for action in problem.actions(s):
+        s_ = problem.result(action)
+        cost = node.path_cost + problem.action_cost(action)
+        yield node.child(state=s_, parent=node, action=action, path_cost=cost)
+
+
 def best_first(problem, h):
     node = Node(state=problem.initial, path_cost=0)
 
@@ -15,7 +23,10 @@ def best_first(problem, h):
 
     reached[node.state] = node
     logs.append(
-        (f"{node.state} inserted in REACHED with value {node.path_cost}", reached.copy())
+        (
+            f"{node.state} inserted in REACHED with value {node.path_cost}",
+            reached.copy(),
+        )
     )
 
     while not pq.empty():
@@ -63,11 +74,3 @@ def best_first(problem, h):
                 )
 
     return None, logs
-
-
-def expand(problem, node):
-    s = node.state
-    for action in problem.actions(s):
-        s_ = problem.result(action)
-        cost = node.path_cost + problem.action_cost(action)
-        yield node.child(state=s_, parent=node, action=action, path_cost=cost)

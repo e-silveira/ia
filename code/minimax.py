@@ -46,11 +46,11 @@ def minimax_pruned(
         return tree.value
 
     if maximize:
-        max_value = -math.inf
+        max_value: float = -math.inf
 
-        i = 0
+        i: int = 0
         while i < len(tree.children):
-            cur_value = minimax_pruned(tree.children[i], False, alpha, beta)
+            cur_value: float = minimax_pruned(tree.children[i], False, alpha, beta)
             max_value = max(max_value, cur_value)
             alpha = max(alpha, cur_value)
             if beta <= alpha:
@@ -64,11 +64,11 @@ def minimax_pruned(
         tree.value = max_value
         return max_value
     else:
-        min_value = math.inf
+        min_value: float = math.inf
 
-        i = 0
+        i: int = 0
         while i < len(tree.children):
-            cur_value = minimax_pruned(tree.children[i], True, alpha, beta)
+            cur_value: float = minimax_pruned(tree.children[i], True, alpha, beta)
             min_value = min(min_value, cur_value)
             beta = min(beta, cur_value)
             if beta <= alpha:
@@ -92,11 +92,11 @@ def minimax_pruned_r(
         return tree.value
 
     if maximize:
-        max_value = -math.inf
+        max_value: float = -math.inf
 
-        i = len(tree.children) - 1
+        i: int = len(tree.children) - 1
         while i >= 0:
-            cur_value = minimax_pruned(tree.children[i], False, alpha, beta)
+            cur_value: float = minimax_pruned(tree.children[i], False, alpha, beta)
             max_value = max(max_value, cur_value)
             alpha = max(alpha, cur_value)
             if beta <= alpha:
@@ -110,11 +110,11 @@ def minimax_pruned_r(
         tree.value = max_value
         return max_value
     else:
-        min_value = math.inf
+        min_value: float = math.inf
 
-        i = len(tree.children) - 1
+        i: int = len(tree.children) - 1
         while i >= 0:
-            cur_value = minimax_pruned(tree.children[i], True, alpha, beta)
+            cur_value: float = minimax_pruned(tree.children[i], True, alpha, beta)
             min_value = min(min_value, cur_value)
             beta = min(beta, cur_value)
             if beta <= alpha:
